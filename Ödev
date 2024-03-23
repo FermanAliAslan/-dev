@@ -1,0 +1,73 @@
+from flask import Flask
+import random
+modern_list = ["Lol=Yüksek sesle gülmek.",
+            "Cringe=Garip yada utandırıcı bir şey.",
+            "Rofl=Bir şakaya karşılık cevap."]
+            
+marka_list = ["Volvo.",
+            "Ferrari.",
+            "Bugatti.",
+            "lamborghini",
+            "Konsegg",
+            "Mercedes",
+            "Bmw"]
+
+
+
+
+
+
+
+
+
+
+
+facts_list = ["Elon Musk, sosyal ağların içeriği görüntülemek için mümkün olduğunca fazla zaman harcamamız için bizi platformun içinde tutmak üzere tasarlandığını iddia ediyor.",
+            "2018 yılında yapılan bir araştırmaya göre 18-34 yaş arası kişilerin %50'den fazlası akıllı telefonlarına bağımlı olduğunu düşünüyor.",
+            "Sosyal ağların olumlu ve olumsuz yanları var ve bu platformları kullanırken her ikisinin de farkında olmalıyız.",
+            "Teknoloji bağımlılığı çalışması, modern bilimsel araştırmanın en alakalı alanlarından biridir."]
+
+app = Flask(__name__)
+
+
+
+@app.route("/")
+def gercek():
+    return f'<h1>MERHABA! Bu sayfada, teknolojik bağımlılıklar hakkında birkaç ilginç gerçeği öğrenebilirsiniz!<a href="/rastgele_gercek">Rastgele bir gerçeği görüntüle!</a>'
+
+
+@app.route("/rastgele_gercek")
+def gercek():
+    return f'<p>{random.choice(facts_list)}</p>'
+
+
+
+@app.route("/")
+def modern_sozcukler():
+    return f'<h2>rastgele bir modern sözcük anlamını öğrenebilirsin!<a href="/rastgele_modern">Rastgele bir modern sözcüğü görüntüle!</a>'
+
+
+@app.route("/rastgele_modern")
+def modern_sozcukler():
+    return f'<p>{random.choice(modern_list)}</p>'
+
+
+
+@app.route("/")
+def markalar():
+    return f'<h2>rastgele bir araba markası anlamını öğrenebilirsin!<a href="/rastgele_araba">Rastgele bir araba markası görüntüle!</a>'
+
+
+@app.route("/rastgele_araba")
+def markalar():
+    return f'<p>{random.choice(marka_list)}</p>'
+
+
+
+
+
+
+
+
+
+app.run(debug=True)
